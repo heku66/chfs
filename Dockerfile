@@ -3,12 +3,13 @@ FROM alpine:latest as builder
 
 # 设置工作目录
 WORKDIR /app
-RUN apk add 
-# 下载 x86_64 平台的软件包
-RUN wget https://example.com/path/to/software-x86_64.tar.gz -O software-x86_64.tar.gz
+# 安装 wget 和 unzip 工具
+RUN apk --no-cache add wget unzip
+# 复制外部脚本到工作目录
+COPY entrypoint.sh .
 
-# 下载 arm64 平台的软件包
-RUN wget https://example.com/path/to/software-arm64.tar.gz -O software-arm64.tar.gz
+# 运行外部脚本
+CMD ["sh", "entrypoint.sh"]
 
 # 最终阶段，定义运行时行为
 FROM alpine:latest
@@ -20,8 +21,6 @@ WORKDIR /app
 COPY --from=builder /app .
 COPY chfs.ini .
 # 进行解压等操作，具体取决于你的软件包
-RUN tar -xzvf software-x86_64.tar.gz && \
-    tar -xzvf software-arm64.tar.gz
 
 EXPOSE 80
 RUN chmod +x chfs
