@@ -23,7 +23,7 @@ jobs:
       id: docker-metadata
       uses: docker/metadata-action@v3
       with:
-        images: solyhe84/chfs2
+        images: solyhe84/chfs
         tags: |
           type=semver,pattern={{version}}
 
