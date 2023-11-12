@@ -11,15 +11,13 @@ RUN chmod +x entrypoint.sh && ./entrypoint.sh && rm -f ./entrypoint.sh
 
 # 最终阶段，定义运行时行为
 FROM alpine:latest
-
+RUN apk --no-cache add tzdata
 # 设置工作目录
 WORKDIR /app
 
 # 从构建阶段复制文件
 COPY --from=builder /app .
 COPY chfs.ini .
-RUN pwd && ls -l
-# 进行解压等操作，具体取决于你的软件包
 
 EXPOSE 80
 # RUN chmod +x chfs
