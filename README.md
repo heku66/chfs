@@ -5,7 +5,7 @@
 
 ## 用法 / Usage
 ```
-docker run -d -p 8008:80 -v <data_path>:/home solyhe84/chfs:arm64
+docker run -d -p 8008:80 -v <data_path>:/home solyhe84/chfs2
 ```
 ## docker-compose用法
 ```
@@ -13,7 +13,7 @@ version: "3"
 
 services:
   chfs:
-    image: solyhe84/chfs:arm64
+    image: solyhe84/chfs2
     container_name: chfs
     restart: always
     environment:
