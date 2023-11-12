@@ -1,5 +1,6 @@
-# chfs
+# chfs2
 [CuteHttpFileServer/chfs](http://iscute.cn/chfs) 是一个免费的、HTTP协议的文件共享服务器，使用浏览器可以快速访问。
+仅修改程序直接从官网下载
 
 ## 用法 / Usage
 ```
