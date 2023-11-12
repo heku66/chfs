@@ -7,9 +7,7 @@ WORKDIR /app
 RUN apk --no-cache add wget unzip
 # 复制外部脚本到工作目录
 COPY entrypoint.sh .
-
-# 运行外部脚本
-CMD ["sh", "entrypoint.sh"]
+RUN chmod +x entrypoint.sh && ./entrypoint.sh
 
 # 最终阶段，定义运行时行为
 FROM alpine:latest
